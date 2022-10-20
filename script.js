@@ -15,17 +15,16 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 10;
 let highscore = 0;
 
-const displayMessage = function(message){
+const displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
-}
+};
 
 const setScore = function (value) {
   document.querySelector('.score').textContent = value;
-}
+};
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
-  console.log(guess, typeof guess);
 
   // When there is no input
   if (!guess) {
@@ -37,23 +36,25 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
-    
-    if (score > highscore){
+
+    if (score > highscore) {
       highscore = score;
       document.querySelector('.highscore').textContent = highscore;
     }
 
     //  Wrong guess
-  } else if(guess !== secretNumber){
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      displayMessage(guess > secretNumber ? '📈️ Troppo alto...' : '📉️ Troppo basso...');
+      displayMessage(
+        guess > secretNumber ? '📈️ Troppo alto...' : '📉️ Troppo basso...'
+      );
       score--;
       setScore(score);
     } else {
       displayMessage('💥️ Hai perso la partita');
       setScore(0);
     }
-  }  
+  }
 });
 
 document.querySelector('.again').addEventListener('click', function () {

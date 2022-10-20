@@ -10,6 +10,11 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 40%;
+  }
+}
 
 body {
   font-family: 'Press Start 2P', sans-serif;
@@ -22,7 +27,7 @@ body {
 header {
   position: relative;
   height: 35vh;
-  border-bottom: 7px solid #eee;
+  border-bottom: 1rem solid #eee;
 }
 
 main {
@@ -31,6 +36,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .left {
@@ -38,11 +44,13 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .right {
   width: 52rem;
   font-size: 2rem;
+  padding: 2rem;
 }
 
 /* ELEMENTS STYLE */
@@ -59,7 +67,7 @@ h1 {
 .number {
   background: #eee;
   color: #333;
-  font-size: 6rem;
+  font-size: 5rem;
   width: 15rem;
   padding: 3rem 0rem;
   text-align: center;
