@@ -29,6 +29,7 @@ document.querySelector('.check').addEventListener('click', function () {
   // When there is no input
   if (!guess) {
     displayMessage('⛔️ Nessun numero!');
+    document.querySelector('.guess').value = '';
 
     // When the player wins
   } else if (guess === secretNumber) {
@@ -36,6 +37,7 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
+    document.querySelector('.guess').value = '';
 
     if (score > highscore) {
       highscore = score;
@@ -47,17 +49,20 @@ document.querySelector('.check').addEventListener('click', function () {
     if (score > 1) {
       displayMessage(
         guess > secretNumber ? '📈️ Troppo alto...' : '📉️ Troppo basso...'
-      );
+      );      
       score--;
       setScore(score);
+      document.querySelector('.guess').value = '';
     } else {
-      displayMessage('💥️ Hai perso la partita');
+      displayMessage('💥️ Hai perso la partita. Prova ancora!');
       setScore(0);
+      document.querySelector('.guess').value = '';
     }
   }
 });
 
 document.querySelector('.again').addEventListener('click', function () {
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
   score = 10;
   setScore(score);
   displayMessage('Prova ad indovinare...');
