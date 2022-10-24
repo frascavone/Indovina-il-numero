@@ -34,7 +34,11 @@ main {
   flex-wrap: wrap;
   margin-top: 2rem;
 }
-
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .left {
   width: 52rem;
   display: flex;
@@ -114,8 +118,8 @@ h1 {
 }
 
 .message {
+  text-align: center;
   font-size: 2rem;
-  height: 3rem;
   margin-bottom: 1rem;
 }
 
@@ -129,7 +133,7 @@ h1 {
   }
 }
 
-@media only screen and (max-height: 400px) {
+@media only screen and (max-height: 600px) {
   h1 {
     display: none;
   }

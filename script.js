@@ -23,13 +23,15 @@ const setScore = function (value) {
   document.querySelector('.score').textContent = value;
 };
 
-const guessNumber = function {
+document.querySelector('.check').addEventListener('click', (e) => {
+  e.preventDefault();
   const guess = Number(document.querySelector('.guess').value);
 
   // When there is no input
   if (!guess) {
-    displayMessage('⛔️ Nessun numero!');
+    displayMessage(`⛔️ Deve essere un numero tra 1 e 20`);
     document.querySelector('.guess').value = '';
+    document.querySelector('.guess').focus();
 
     // When the player wins
   } else if (guess === secretNumber) {
@@ -38,6 +40,7 @@ const guessNumber = function {
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
     document.querySelector('.guess').value = '';
+    document.querySelector('.again').focus();
 
     if (score > highscore) {
       highscore = score;
@@ -49,23 +52,26 @@ const guessNumber = function {
     if (score > 1) {
       displayMessage(
         guess > secretNumber ? '📈️ Troppo alto...' : '📉️ Troppo basso...'
-      );      
+      );
       score--;
       setScore(score);
       document.querySelector('.guess').value = '';
+      document.querySelector('.guess').focus();
     } else {
       displayMessage('💥️ Hai perso la partita. Prova ancora!');
       setScore(0);
       document.querySelector('.guess').value = '';
+      document.querySelector('.again').focus();
     }
   }
 });
-
-document.querySelector('.check').addEventListener('click', guessNumber);
-
+// document.querySelector('.check').addEventListener('keypress', (e) => {
+//   if (e.key === 'enter') guessNumber();
+// });
 
 document.querySelector('.again').addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector('.guess').focus();
   score = 10;
   setScore(score);
   displayMessage('Prova ad indovinare...');
