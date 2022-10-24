@@ -23,7 +23,7 @@ const setScore = function (value) {
   document.querySelector('.score').textContent = value;
 };
 
-document.querySelector('.check').addEventListener('click', function () {
+const guessNumber = function {
   const guess = Number(document.querySelector('.guess').value);
 
   // When there is no input
@@ -60,6 +60,9 @@ document.querySelector('.check').addEventListener('click', function () {
     }
   }
 });
+
+document.querySelector('.check').addEventListener('click', guessNumber);
+
 
 document.querySelector('.again').addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 20) + 1;
